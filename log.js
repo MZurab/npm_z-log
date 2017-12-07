@@ -106,16 +106,16 @@ function defaultMessage (type, id,code,text,v3,v4,v5,v6,v7,v8) {
 _['defaultMessage'] = defaultMessage;
 
 function defaultErrorMessage ( id,code,text,v3,v4,v5,v6,v7,v8) {
-  defaultMessage('error',id,code,text,v3,v4,v5,v6,v7,v8);
+  return defaultMessage('error',id,code,text,v3,v4,v5,v6,v7,v8);
 }
 _['defaultErrorMessage'] = defaultErrorMessage;
 
 function defaultWarnMessage ( id,code,text,v3,v4,v5,v6,v7,v8) {
-  defaultMessage('warn',id,code,text,v3,v4,v5,v6,v7,v8);
+  return defaultMessage('warn',id,code,text,v3,v4,v5,v6,v7,v8);
 }
 _['defaultWarnMessage'] = defaultWarnMessage;
 
 if (typeof window == 'object') {
-  
+
 }
 module.exports = _;
