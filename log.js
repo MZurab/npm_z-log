@@ -102,17 +102,17 @@ function errorObject (v1,v2,v3,v4,v5,v6,v7,v8) {
 _['errorObject'] = errorObject;
 
 
-function errorSrandard (id,number,text,v3,v4,v5,v6,v7,v8) {
+function errorSrandard (id,code,text,v3,v4,v5,v6,v7,v8) {
   id = '#'+id;
 
   var objForViewError = {
-    'id'      : 'id',
-    'number'  : number
+    'id'      : id,
+    'code'  : code
   };
   if(typeof text != 'undefined') objForViewError['text'] = text;
 
-  v1 = 'z-log error ('+id+' - '+number+')';
-  v2 = text;
+  var v1 = 'z-log error ('+id+' - '+code+')';
+  var v2 = text;
   // show error
   errorObject (v1,v2,v3,v4,v5,v6,v7,v8);
   return objForViewError;
