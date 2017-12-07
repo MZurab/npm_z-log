@@ -104,12 +104,12 @@ _['errorObject'] = errorObject;
 
 function errorSrandard (id,number,text) {
   var objForViewError = {
-    'id'      : id,
+    'id'      : '#'+id,
     'number'  : number
   };
   if(typeof text != 'undefined') objForViewError['text'] = text;
-  
-  v1 = 'z-log error (#'+id+' - '+number+')';
+
+  v1 = 'z-log error ('+id+' - '+number+')';
   v2 = text;
   // show error
   errorObject (v1,v2,v3,v4,v5,v6,v7,v8);
