@@ -3,7 +3,7 @@ const _ = {};
 
 // global.logState = 0;
 
-function on (){
+function on () {
   global.logState = 1
 }
 _['on'] = on;
@@ -21,6 +21,31 @@ function checkAccessForLog () {
 }
 _['checkAccessForLog'] = checkAccessForLog;
 
+function error (v1,v2,v3,v4,v5,v6,v7,v8) {
+  if(!checkAccessForLog()) return false;
+
+  if( typeof v8 != 'undefined' ) {
+    console.error(v1,v2,v3,v4,v5,v6,v7,v8);
+  } else if (typeof v7 != 'undefined') {
+    console.error(v1,v2,v3,v4,v5,v6,v7);
+  } else if (typeof v6 != 'undefined') {
+    console.error(v1,v2,v3,v4,v5,v6);
+  } else if (typeof v5 != 'undefined') {
+    console.error(v1,v2,v3,v4,v5);
+  } else if (typeof v4 != 'undefined') {
+    console.error(v1,v2,v3,v4);
+  } else if (typeof v3 != 'undefined') {
+    console.error(v1,v2,v3);
+  } else if (typeof v2 != 'undefined') {
+    console.error(v1,v2);
+  } else if (typeof v1 != 'undefined') {
+    console.error(v1);
+  } else {
+    return false;
+  }
+  return true;
+}
+_['error'] = error;
 
 function print (v1,v2,v3,v4,v5,v6,v7,v8) {
   if(!checkAccessForLog()) return false;
@@ -61,5 +86,36 @@ function printObject (v1,v2,v3,v4,v5,v6,v7,v8) {
   return print (v1,v2,v3,v4,v5,v6,v7,v8);
 }
 _['printObject'] = printObject;
+
+function errorObject (v1,v2,v3,v4,v5,v6,v7,v8) {
+
+  v1 = JSON.stringify(v1);
+  v2 = JSON.stringify(v2);
+  v3 = JSON.stringify(v3);
+  v4 = JSON.stringify(v4);
+  v5 = JSON.stringify(v5);
+  v6 = JSON.stringify(v6);
+  v7 = JSON.stringify(v7);
+  v8 = JSON.stringify(v8);
+  return error (v1,v2,v3,v4,v5,v6,v7,v8);
+}
+_['errorObject'] = errorObject;
+
+
+function errorSrandard (id,number,text) {
+  var objForViewError = {
+    'id'      : id,
+    'number'  : number
+  };
+  if(typeof text != 'undefined') objForViewError['text'] = text;
+  
+  v1 = 'z-log error (#'+id+' - '+number+')';
+  v2 = text;
+  // show error
+  errorObject (v1,v2,v3,v4,v5,v6,v7,v8);
+  return objForViewError;
+}
+_['errorSrandard'] = errorSrandard;
+
 
 module.exports = _;
