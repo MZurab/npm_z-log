@@ -1,20 +1,18 @@
+// window.logState = 0;
 const _ = {};
 
-
-// global.logState = 0;
-
 function on () {
-  global.logState = 1
+  window.logState = 1
 }
 _['on'] = on;
 
 function off () {
-  global.logState = 0
+  window.logState = 0
 }
 _['off'] = off;
 
 function checkAccessForLog () {
-  if (global.logState) {
+  if (window.logState) {
     return true;
   }
   return false
@@ -118,6 +116,3 @@ function errorSrandard (id,number,text,v3,v4,v5,v6,v7,v8) {
   return objForViewError;
 }
 _['errorSrandard'] = errorSrandard;
-
-
-module.exports = _;
