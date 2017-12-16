@@ -88,7 +88,11 @@ function warnObject (v1,v2,v3,v4,v5,v6,v7,v8) {
 _['warnObject'] = warnObject;
 
 
-function defaultMessage (type, id,code,text,v3,v4,v5,v6,v7,v8) {
+function defaultMessage (type, id,code,text,v3,v4,v5,v6,v7,v8, auth) {
+  if(typeof auth != 'string') 
+    auth = '';
+  else
+    auth = '<' + auth + '>';
   id = '#'+id;
 
   var objForViewError = {
@@ -97,7 +101,7 @@ function defaultMessage (type, id,code,text,v3,v4,v5,v6,v7,v8) {
   };
   if(typeof text != 'undefined') objForViewError['text'] = text;
 
-  var v1 = 'z-log <'+type.toUpperCase()+'> ('+id+' - '+code+')';
+  var v1 = 'z-log <'+type.toUpperCase()+'> '+auth.toUpperCase() + ' ('+id+' - '+code+')';
   var v2 = text;
   // show error
   printObject (v1,v2,v3,v4,v5,v6,v7,v8,type);
@@ -105,19 +109,28 @@ function defaultMessage (type, id,code,text,v3,v4,v5,v6,v7,v8) {
 }
 _['defaultMessage'] = defaultMessage;
 
-function defaultErrorMessage ( id,code,text,v3,v4,v5,v6,v7,v8) {
-  return defaultMessage('error',id,code,text,v3,v4,v5,v6,v7,v8);
+function defaultErrorMessage ( id,code,text,v3,v4,v5,v6,v7,v8,auth) {
+  return defaultMessage('error',id,code,text,v3,v4,v5,v6,v7,v8, auth);
 }
 _['defaultErrorMessage'] = defaultErrorMessage;
 
-function defaultWarnMessage ( id,code,text,v3,v4,v5,v6,v7,v8) {
-  return defaultMessage('warn',id,code,text,v3,v4,v5,v6,v7,v8);
+function defaultWarnMessage ( id,code,text,v3,v4,v5,v6,v7,v8,auth) {
+  return defaultMessage('warn',id,code,text,v3,v4,v5,v6,v7,v8, auth);
 }
 _['defaultWarnMessage'] = defaultWarnMessage;
 
-function step ( id,code,text,v3,v4,v5,v6,v7,v8) {
-  return defaultMessage('log',id,code,text,v3,v4,v5,v6,v7,v8);
+function step ( id,code,text,v3,v4,v5,v6,v7,v8, auth) {
+  return defaultMessage('log',id,code,text,v3,v4,v5,v6,v7,v8, auth);
 }
 _['step'] = step;
+
+function fstep (auth, id,code,text,v3,v4,v5,v6,v7,v8) {
+  step( id,code,text,v3,v4,v5,v6,v7,v8, auth);
+} _['fstep'] = fstep;
+
+function ferror ( auth, id,code,text,v3,v4,v5,v6,v7,v8) {
+  return defaultMessage('error',id,code,text,v3,v4,v5,v6,v7,v8, auth);
+}
+_['ferror'] = ferror;
 
 module.exports = _;
