@@ -13,6 +13,13 @@ function off () {
 }
 _['off'] = off;
 
+function consoleOff() {
+    console.log = function () {};
+    console.error = function () {};
+    console.warn = function () {};
+}
+_['consoleOff'] = consoleOff;
+
 function checkAccessForLog () {
   if (global.logState) {
     return true;
