@@ -1,6 +1,6 @@
 {
   "name": "ramman-z-log",
-  "version": "1.0.147",
+  "version": "1.0.148",
   "description": "For logs what we can controll",
   "main": "log.js",
   "scripts": {

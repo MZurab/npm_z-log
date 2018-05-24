@@ -24,7 +24,7 @@ _['checkAccessForLog'] = checkAccessForLog;
 
 
 function print (v1,v2,v3,v4,v5,v6,v7,v8,type) {
-  if(!checkAccessForLog()) return false;
+    if(!checkAccessForLog()) return false;
   
   if(typeof type != 'string') type = 'log';
 
@@ -52,7 +52,7 @@ function print (v1,v2,v3,v4,v5,v6,v7,v8,type) {
 _['print'] = print;
 
 function printObject (v1,v2,v3,v4,v5,v6,v7,v8,type) {
-
+    if(!checkAccessForLog()) return false;
   v1 = JSON.stringify(v1);
   v2 = JSON.stringify(v2);
   v3 = JSON.stringify(v3);
@@ -67,28 +67,33 @@ _['printObject'] = printObject;
 
 
 function error (v1,v2,v3,v4,v5,v6,v7,v8) {
+    if(!checkAccessForLog()) return false;
   print (v1,v2,v3,v4,v5,v6,v7,v8,'error');
 }
 _['error'] = error;
 
 function errorObject (v1,v2,v3,v4,v5,v6,v7,v8) {
+    if(!checkAccessForLog()) return false;
   return printObject (v1,v2,v3,v4,v5,v6,v7,v8,'error');
 }
 _['errorObject'] = errorObject;
 
 
 function warn (v1,v2,v3,v4,v5,v6,v7,v8) {
+    if(!checkAccessForLog()) return false;
   print (v1,v2,v3,v4,v5,v6,v7,v8,'warn');
 }
 _['warn'] = warn;
 
 function warnObject (v1,v2,v3,v4,v5,v6,v7,v8) {
+    if(!checkAccessForLog()) return false;
   return printObject (v1,v2,v3,v4,v5,v6,v7,v8,'warn');
 }
 _['warnObject'] = warnObject;
 
 
 function defaultMessage (type, id,code,text,v3,v4,v5,v6,v7,v8, auth) {
+    if(!checkAccessForLog()) return false;
   if(typeof auth != 'string') 
     auth = '';
   else
@@ -120,6 +125,7 @@ function defaultWarnMessage ( id,code,text,v3,v4,v5,v6,v7,v8,auth) {
 _['defaultWarnMessage'] = defaultWarnMessage;
 
 function step ( id,code,text,v3,v4,v5,v6,v7,v8, auth) {
+    if(!checkAccessForLog()) return false;
   return defaultMessage('log',id,code,text,v3,v4,v5,v6,v7,v8, auth);
 }
 _['step'] = step;
