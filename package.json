@@ -1,6 +1,6 @@
 {
   "name": "mz-log",
-  "version": "1.0.150",
+  "version": "1.0.151",
   "description": "For logs what we can controll",
   "main": "dist/log.js",
   "types": "dist/log.d.ts",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/RammanAdmin/npm_z-log.git"
+    "ul": "https://github.com/RammanAdmin/npm_z-log.git"
   },
   "keywords": [
     "npm",
