@@ -1,9 +1,11 @@
 {
-  "name": "ramman-z-log",
-  "version": "1.0.149",
+  "name": "mz-log",
+  "version": "1.0.150",
   "description": "For logs what we can controll",
-  "main": "log.js",
+  "main": "dist/log.js",
+  "types": "dist/log.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
